@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - John M. James, Ltd.</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            color: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #1e40af;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e40af;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+            background-color: #f8fafc;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: #f8fafc;
+            color: #2c3e50;
+            padding: 20px 0 40px 0;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            padding: 40px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            background: #eff6ff;
+            border: 4px solid #1e40af;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1e40af;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-image i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-image p {
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .about-text h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #1e40af;
+            color: #2c3e50;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .highlight-box p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* Credentials Section */
+        .credentials-section {
+            padding: 20px 0 40px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .credential-card {
+            text-align: center;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #1e40af;
+        }
+
+        .credential-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .credential-icon {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            background: #eff6ff;
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .credential-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .credential-card p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .credential-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .credential-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 40px 0;
+            background: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .value-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            background: #eff6ff;
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Experience Timeline Section */
+        .experience-section {
+            padding: 40px 0;
+            background: #f8fafc;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #1e40af;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 2rem 0;
+            position: relative;
+            width: 45%;
+            border: 1px solid #e2e8f0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 15px;
+            height: 15px;
+            background: #1e40af;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -28px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -28px;
+        }
+
+        .timeline-item h4 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-item .year {
+            color: #fbbf24;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Community Section */
+        .community-section {
+            padding: 40px 0;
+            background: white;
+        }
+
+        .community-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .community-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .community-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #64748b;
+        }
+
+        .community-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .community-feature {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .community-feature:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        }
+
+        .community-feature i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+        }
+
+        .community-feature h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .community-feature p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 40px 0;
+            background: #1e40af;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cta-button.primary {
+            background: #fbbf24;
+            color: #1e40af;
+            box-shadow: 0 4px 14px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-button.primary:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #1e40af;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #1e40af;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 200px;
+                width: 200px;
+                margin: 0 auto;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 40px);
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-item::before {
+                left: -28px !important;
+            }
+
+            .credentials-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">John M. James, Ltd.</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About John M. James</h1>
+            <p>Licensed CPA and CERTIFIED FINANCIAL PLANNER™ with over three decades of professional experience serving Minnesota families and businesses</p>
+        </div>
+    </section>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Your Trusted Financial Partner</h2>
+                    <p>For over 30 years, I have been providing comprehensive accounting and tax guidance to individuals, business owners, and corporations throughout Minnesota. My extensive experience across multiple client types gives me the breadth of knowledge needed to assist clients in virtually any financial situation.</p>
+                    
+                    <p>I received my Bachelor of Accountancy from the University of Minnesota, Duluth, and hold both CPA and CERTIFIED FINANCIAL PLANNER™ certifications. This unique combination of credentials allows me to provide comprehensive financial services that extend far beyond traditional accounting, encompassing strategic tax planning, retirement planning, and estate planning.</p>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-user-tie"></i>
+                    <p>Professional Headshot of John M. James</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <p style="color: #64748b; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">My practice specializes in helping individuals and business owners with income tax and estate planning strategies, retirement planning for 401(k), SEP, and ESOP plans, as well as assisting client families navigate the complex challenges of aging parents, including healthcare decisions, living arrangements, and wealth transfer planning.</p>
+            </div>
+            <div style="max-width: 1000px; margin: 4rem auto 1rem auto;">
+                <div class="highlight-box">
+                    <h3>Personal Background & Community Involvement</h3>
+                    <p>I grew up in Maple Plain, Minnesota and currently reside in Medina with my wife, Lisa. We have one daughter and actively participate in church, community, and sporting events as a family. In my personal time, I enjoy playing hockey, fishing, and hunting. I am a proud member of the Orono Lions Club and regularly volunteer for community and charity opportunities throughout the Twin Cities area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials-section">
+        <div class="container">
+            <h2 class="section-title">Professional Credentials & Experience</h2>
+            <p class="section-subtitle">Comprehensive qualifications and demonstrated expertise in tax and financial planning</p>
+            <div class="credentials-grid">
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <span class="credential-number">30+</span>
+                    <span class="credential-label">Years of Professional Experience</span>
+                    <p>Three decades of comprehensive accounting, tax, and financial planning experience serving diverse clientele.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Licensed CPA</h4>
+                    <p>Certified Public Accountant with expertise in tax preparation, business accounting, and financial consulting services.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>CERTIFIED FINANCIAL PLANNER™</h4>
+                    <p>CFP® certification from the College for Financial Planning, providing comprehensive retirement and investment planning expertise.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Bachelor of Accountancy</h4>
+                    <p>University of Minnesota, Duluth - comprehensive accounting education with focus on tax law and financial analysis.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Business Expertise</h4>
+                    <p>Extensive experience with corporations, partnerships, LLCs, and individual clients across multiple industries and business types.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h4>Minnesota Practice</h4>
+                    <p>Long Lake office serving the greater Twin Cities area with deep understanding of local tax laws and community needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values & Approach</h2>
+            <p class="section-subtitle">The principles that guide our professional practice and client relationships</p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Professional Excellence</h3>
+                    <p>Dual credentials as both CPA and CERTIFIED FINANCIAL PLANNER™ with continuous education and commitment to staying current with tax law and financial planning best practices.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Personal Service Commitment</h3>
+                    <p>Hands-on approach with personal client interviews for all tax returns and proactive interaction throughout the service process, ensuring individualized attention for every client.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Family & Community Focus</h3>
+                    <p>Strong family values and active community involvement through the Orono Lions Club, with deep understanding of Minnesota families' financial needs and challenges.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Comprehensive Expertise</h3>
+                    <p>Specialized knowledge in retirement planning, estate strategies, aging parent navigation, and wealth transfer, helping families through all stages of their financial journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="experience-section">
+        <div class="container">
+            <h2 class="section-title">Professional Journey</h2>
+            <p class="section-subtitle">Three decades of growing expertise and expanding services</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Bachelor of Accountancy</h4>
+                    <div class="year">University of Minnesota, Duluth</div>
+                    <p>Completed comprehensive accounting education with focus on tax law, financial analysis, and business accounting principles.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>CPA License & Practice Launch</h4>
+                    <div class="year">Early Career</div>
+                    <p>Obtained CPA license and began professional practice, establishing expertise in individual and business tax preparation and planning.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>CERTIFIED FINANCIAL PLANNER™</h4>
+                    <div class="year">College for Financial Planning</div>
+                    <p>Earned CFP® designation to expand services into comprehensive retirement planning, investment strategies, and financial planning.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>John M. James, Ltd. Establishment</h4>
+                    <div class="year">Long Lake, Minnesota</div>
+                    <p>Established independent practice in Long Lake, focusing on personalized service for Twin Cities area families and businesses.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Specialized Services Expansion</h4>
+                    <div class="year">Ongoing Development</div>
+                    <p>Developed specialized expertise in estate planning, aging parent navigation, and multi-generational wealth transfer strategies.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>30+ Years of Excellence</h4>
+                    <div class="year">Present Day</div>
+                    <p>Continuing to serve Minnesota families and businesses with comprehensive tax, accounting, and financial planning services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="container">
+            <div class="community-content">
+                <h2>Community Commitment</h2>
+                <p>Beyond professional services, I believe in giving back to the community that has supported my practice for over three decades. My involvement in local organizations and volunteer activities reflects the same values of service and integrity that guide my professional work.</p>
+                
+                <div class="community-features">
+                    <div class="community-feature">
+                        <i class="fas fa-users"></i>
+                        <h4>Orono Lions Club</h4>
+                        <p>Active member participating in community service projects and charitable initiatives throughout the Twin Cities area.</p>
+                    </div>
+                    <div class="community-feature">
+                        <i class="fas fa-church"></i>
+                        <h4>Faith Community</h4>
+                        <p>Regular participation in church activities and community events with focus on family values and community support.</p>
+                    </div>
+                    <div class="community-feature">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h4>Volunteer Work</h4>
+                        <p>Ongoing volunteer involvement in various charity opportunities and community organizations throughout Minnesota.</p>
+                    </div>
+                    <div class="community-feature">
+                        <i class="fas fa-home"></i>
+                        <h4>Local Roots</h4>
+                        <p>Lifelong Minnesota resident with deep understanding of local values, challenges, and opportunities facing area families and businesses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Work Together?</h2>
+                <p>Let's discuss how my three decades of experience can help you achieve your financial goals and navigate your unique challenges with confidence.</p>
+                <div>
+                    <a href="contact.html" class="cta-button primary">Schedule Your Consultation</a>
+                    <a href="services.html" class="cta-button secondary">View Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h4>John M. James, Ltd.</h4>
+                    <p>Professional tax and financial planning services for over 30 years. Licensed CPA and CERTIFIED FINANCIAL PLANNER™ serving the greater Twin Cities area.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>(763) 227-7909</p>
+                    <p>john@jmjltd-cpa.com</p>
+                    <p>1605 Wayzata Blvd W<br>Long Lake, MN 55356</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 John M. James, Ltd. All rights reserved. | Licensed CPA & CERTIFIED FINANCIAL PLANNER™</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Counter animation for experience years
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.credential-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                if (target > 0) {
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target + '+';
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + '+';
+                        }
+                    }, 30);
+                }
+            });
+        };
+
+        // Trigger counter animation when page loads
+        document.addEventListener('DOMContentLoaded', animateCounters);
+    </script>
+</body>
+</html>
