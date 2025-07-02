@@ -73,14 +73,21 @@
             background: #f8fafc;
             color: #2c3e50;
             padding: 140px 0 80px;
-            text-align: center;
             border-bottom: 1px solid #e2e8f0;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
         }
 
         .hero h1 {
@@ -95,19 +102,18 @@
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
             color: #64748b;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
             line-height: 1.6;
         }
 
         .hero-headshot {
-            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .headshot-placeholder {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background: #eff6ff;
             border: 4px solid #1e40af;
@@ -115,10 +121,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 0 auto;
             color: #1e40af;
             text-align: center;
             padding: 1rem;
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15);
         }
 
         .headshot-placeholder i {
@@ -135,7 +141,7 @@
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
             margin-top: 1rem;
         }
@@ -521,12 +527,26 @@
                 gap: 1rem;
             }
 
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
             .hero h1 {
                 font-size: 2.2rem;
             }
 
             .hero .subtitle {
                 font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
             }
 
             .about-content {
@@ -583,18 +603,20 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
+            <div class="hero-text">
+                <h1>John M. James, CPA & CFP®</h1>
+                <p class="subtitle">Over 30 years of professional experience serving individuals, business owners, and corporations with comprehensive tax strategies and financial planning solutions</p>
+                <div class="hero-buttons">
+                    <button class="modal-btn" data-modal="services">Our Services</button>
+                    <button class="modal-btn" data-modal="about">About John</button>
+                    <button class="modal-btn" data-modal="contact">Contact Us</button>
+                </div>
+            </div>
             <div class="hero-headshot">
                 <div class="headshot-placeholder">
                     <i class="fas fa-user-tie"></i>
                     <p>Professional Headshot of John M. James</p>
                 </div>
-            </div>
-            <h1>John M. James, CPA & CFP®</h1>
-            <p class="subtitle">Over 30 years of professional experience serving individuals, business owners, and corporations with comprehensive tax strategies and financial planning solutions</p>
-            <div class="hero-buttons">
-                <button class="modal-btn" data-modal="services">Our Services</button>
-                <button class="modal-btn" data-modal="about">About John</button>
-                <button class="modal-btn" data-modal="contact">Contact Us</button>
             </div>
         </div>
     </section>
