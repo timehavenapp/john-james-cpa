@@ -23,7 +23,7 @@
         .header {
             background: #ffffff;
             color: #2c3e50;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -36,16 +36,9 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1e40af;
-            letter-spacing: -0.5px;
         }
 
         .nav-menu {
@@ -72,17 +65,17 @@
         .hero {
             background: #f8fafc;
             color: #2c3e50;
-            padding: 140px 0 80px;
+            padding: 120px 0 60px;
             border-bottom: 1px solid #e2e8f0;
         }
 
         .hero-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: center;
         }
 
@@ -91,16 +84,16 @@
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: #1e40af;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             color: #64748b;
             line-height: 1.6;
         }
@@ -108,34 +101,22 @@
         .hero-headshot {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .headshot-placeholder {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: #eff6ff;
-            border: 4px solid #1e40af;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #1e40af;
-            text-align: center;
-            padding: 1rem;
+        .headshot-container {
+            width: 280px;
+            height: 280px;
+            border-radius: 8px;
+            overflow: hidden;
             box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15);
         }
 
-        .headshot-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .headshot-placeholder p {
-            font-size: 0.8rem;
-            margin: 0;
-            line-height: 1.2;
+        .headshot-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
         }
 
         .hero-buttons {
@@ -174,13 +155,22 @@
         }
 
         .credentials-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            padding: 0 2rem;
+            align-items: center;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+
+        .credentials-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideRightToLeft 60s infinite linear;
+            animation-delay: 3s;
+            width: max-content;
         }
 
         .credential-item {
@@ -188,11 +178,35 @@
             align-items: center;
             gap: 0.5rem;
             font-weight: 600;
+            white-space: nowrap;
+            margin-right: 7.4rem;
+        }
+
+        @keyframes slideRightToLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .credential-item i {
             font-size: 1.2rem;
             color: #fbbf24;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-5px);
+            }
+            60% {
+                transform: translateY(-3px);
+            }
         }
 
         /* Services Section */
@@ -202,9 +216,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         .section-title {
@@ -286,6 +300,10 @@
             align-items: center;
         }
 
+        .about-text {
+            text-align: left;
+        }
+
         .about-text h2 {
             font-size: 2.3rem;
             margin-bottom: 2rem;
@@ -298,6 +316,30 @@
             font-size: 1.1rem;
             margin-bottom: 2rem;
             line-height: 1.8;
+        }
+
+        .about-map {
+            text-align: center;
+        }
+
+        .about-map h4 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .about-map p {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
         }
 
         .about-stats {
@@ -328,18 +370,7 @@
             font-weight: 500;
         }
 
-        .about-image {
-            background: #e2e8f0;
-            border-radius: 12px;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            text-align: center;
-            padding: 2rem;
-            border: 2px dashed #cbd5e1;
-        }
+
 
         .cta-button {
             background: #1e40af;
@@ -369,40 +400,135 @@
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         .footer-top {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
             margin-bottom: 2rem;
-            text-align: left;
+            text-align: center;
+            align-items: stretch;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .footer-section:nth-child(1) {
+            text-align: center;
+        }
+
+        .footer-section:nth-child(2) {
+            text-align: center;
+        }
+
+        .footer-section:nth-child(3) {
+            text-align: center;
         }
 
         .footer-section h4 {
             color: white;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .footer-section p,
         .footer-section a {
             color: #94a3b8;
             text-decoration: none;
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-section a:hover {
             color: #1e40af;
         }
 
+        .footer-credentials {
+            margin-top: 1.5rem;
+            margin-bottom: auto;
+            text-align: center;
+        }
+
+        .credential-badge {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: auto;
+            text-align: center;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #1e40af;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .contact-item i {
+            color: #1e40af;
+            width: 18px;
+            font-size: 1rem;
+        }
+
+        .contact-item span {
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
         .footer-bottom {
             border-top: 1px solid #334155;
-            padding-top: 2rem;
+            padding-top: 2.5rem;
             text-align: center;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-bottom-content p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         /* Modal Styles */
@@ -530,11 +656,11 @@
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-                text-align: center;
+                text-align: left;
             }
 
             .hero-text {
-                text-align: center;
+                text-align: left;
             }
 
             .hero h1 {
@@ -546,12 +672,18 @@
             }
 
             .hero-buttons {
-                justify-content: center;
+                justify-content: flex-start;
             }
+
+
 
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .about-text {
+                text-align: center;
             }
 
             .services-grid {
@@ -561,6 +693,21 @@
             .credentials-content {
                 flex-direction: column;
                 gap: 1rem;
+                justify-content: center;
+            }
+
+            .credentials-content {
+                animation: slideRightToLeftMobile 45s infinite linear;
+                animation-delay: 2s;
+            }
+
+            @keyframes slideRightToLeftMobile {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
             }
 
             .about-stats {
@@ -569,7 +716,7 @@
 
             .hero-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
 
             .modal-content {
@@ -581,6 +728,15 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -588,7 +744,6 @@
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
-            <div class="logo">John M. James, Ltd.</div>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -613,9 +768,8 @@
                 </div>
             </div>
             <div class="hero-headshot">
-                <div class="headshot-placeholder">
-                    <i class="fas fa-user-tie"></i>
-                    <p>Professional Headshot of John M. James</p>
+                <div class="headshot-container">
+                    <img src="images/headshot.jpeg" alt="John M. James, CPA & CFP®" class="headshot-image">
                 </div>
             </div>
         </div>
@@ -624,21 +778,40 @@
     <!-- Credentials Bar -->
     <section class="credentials">
         <div class="credentials-content">
-            <div class="credential-item">
-                <i class="fas fa-certificate"></i>
-                <span>Licensed CPA</span>
-            </div>
-            <div class="credential-item">
-                <i class="fas fa-award"></i>
-                <span>CERTIFIED FINANCIAL PLANNER™</span>
-            </div>
-            <div class="credential-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span>30+ Years Experience</span>
-            </div>
-            <div class="credential-item">
-                <i class="fas fa-graduation-cap"></i>
-                <span>University of Minnesota, Duluth</span>
+            <div class="credentials-wrapper">
+                <div class="credential-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Licensed CPA</span>
+                </div>
+                <div class="credential-item">
+                    <i class="fas fa-award"></i>
+                    <span>CERTIFIED FINANCIAL PLANNER™</span>
+                </div>
+                <div class="credential-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>30+ Years Experience</span>
+                </div>
+                <div class="credential-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>University of Minnesota, Duluth</span>
+                </div>
+                <!-- Duplicate set for seamless loop -->
+                <div class="credential-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Licensed CPA</span>
+                </div>
+                <div class="credential-item">
+                    <i class="fas fa-award"></i>
+                    <span>CERTIFIED FINANCIAL PLANNER™</span>
+                </div>
+                <div class="credential-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>30+ Years Experience</span>
+                </div>
+                <div class="credential-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>University of Minnesota, Duluth</span>
+                </div>
             </div>
         </div>
     </section>
@@ -710,10 +883,19 @@
                     <p>As a licensed CPA and CERTIFIED FINANCIAL PLANNER™ with over three decades of experience, I provide comprehensive financial services to individuals, business owners, and corporations throughout Minnesota.</p>
                     <a href="contact.html" class="cta-button">Schedule Your Consultation</a>
                 </div>
-                <div class="about-image">
-                    <div>
-                        <h4>Professional Office Setting</h4>
-                        <p>Our Long Lake office provides a comfortable, professional environment for consultations and meetings with clients throughout the Twin Cities area.</p>
+                <div class="about-map">
+                    <h4>Visit Our Office</h4>
+                    <p>1605 Wayzata Blvd W, Long Lake, MN 55356</p>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.5!2d-93.6!3d44.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDU0JzAwLjAiTiA5M8KwMzYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -727,16 +909,46 @@
                 <div class="footer-section">
                     <h4>John M. James, Ltd.</h4>
                     <p>Professional tax and financial planning services for over 30 years. Licensed CPA and CERTIFIED FINANCIAL PLANNER™ serving the greater Twin Cities area.</p>
+                    <div class="footer-credentials">
+                        <span class="credential-badge">Licensed CPA</span>
+                        <span class="credential-badge">CERTIFIED FINANCIAL PLANNER™</span>
+                    </div>
                 </div>
+
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>(763) 227-7909</p>
-                    <p>john@jmjltd-cpa.com</p>
-                    <p>1605 Wayzata Blvd W<br>Long Lake, MN 55356</p>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(763) 227-7909</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>john@jmjltd-cpa.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1605 Wayzata Blvd W<br>Long Lake, MN 55356</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri: 9:00 AM - 5:00 PM</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 John M. James, Ltd. All rights reserved. | Licensed CPA & CERTIFIED FINANCIAL PLANNER™</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 John M. James, Ltd. All rights reserved.</p>
+                    <p>Licensed CPA & CERTIFIED FINANCIAL PLANNER™</p>
+                </div>
             </div>
         </div>
     </footer>
