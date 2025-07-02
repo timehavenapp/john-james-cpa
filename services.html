@@ -16,13 +16,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #2c3e50;
+            overflow-x: hidden;
         }
 
         /* Header */
         .header {
             background: #ffffff;
             color: #2c3e50;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-bottom: 3px solid #1e40af;
         }
@@ -31,16 +36,9 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1e40af;
-            letter-spacing: -0.5px;
         }
 
         .nav-menu {
@@ -67,7 +65,7 @@
         .page-header {
             background: #f8fafc;
             color: #2c3e50;
-            padding: 20px 0 40px;
+            padding: 100px 0 30px;
             text-align: center;
             border-bottom: 1px solid #e2e8f0;
         }
@@ -94,13 +92,13 @@
 
         /* Services Grid */
         .services-section {
-            padding: 0 0 40px 0;
+            padding: 30px 0;
             background: white;
         }
 
         .services-intro {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -121,19 +119,29 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .service-detail {
             background: white;
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
             border-left: 5px solid #1e40af;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
         }
 
         .service-detail:hover {
@@ -141,93 +149,192 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
-        .service-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #1e40af;
-            margin-right: 1.5rem;
             background: #eff6ff;
-            padding: 1rem;
-            border-radius: 12px;
+            padding: 0.75rem;
+            border-radius: 10px;
             width: 70px;
             height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            margin-bottom: 1rem;
         }
 
         .service-detail h3 {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             color: #1e40af;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .service-detail .subtitle {
             color: #64748b;
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 500;
             font-style: italic;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
         }
 
         .service-detail p {
             color: #64748b;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            font-size: 0.9rem;
+            max-width: 240px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: #f8fafc;
+            color: #1e40af;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-icon {
+            font-size: 2rem;
+            color: #1e40af;
+            background: #eff6ff;
+            padding: 0.75rem;
+            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .modal-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 2rem;
             font-size: 1rem;
         }
 
-        .service-features {
+        .modal-features {
             list-style: none;
             margin-bottom: 2rem;
         }
 
-        .service-features li {
-            padding: 0.7rem 0;
+        .modal-features li {
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
             color: #2c3e50;
             line-height: 1.5;
+            font-size: 1rem;
         }
 
-        .service-features li::before {
+        .modal-features li::before {
             content: '\f00c';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
             color: #1e40af;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
-        .cta-button {
+        .modal-cta {
             display: inline-block;
             background: #1e40af;
             color: white;
-            padding: 0.875rem 1.75rem;
+            padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 14px rgba(30, 64, 175, 0.2);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        .cta-button:hover {
+        .modal-cta:hover {
+            background: #1d4ed8;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
-            background: #1d4ed8;
         }
 
         /* Process Section */
         .process-section {
-            padding: 40px 0;
+            padding: 30px 0;
             background: #f8fafc;
         }
 
@@ -243,7 +350,7 @@
             text-align: center;
             color: #64748b;
             font-size: 1.1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -253,7 +360,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
 
         .process-step {
@@ -299,7 +406,7 @@
 
         /* Expertise Section */
         .expertise-section {
-            padding: 40px 0;
+            padding: 30px 0;
             background: white;
         }
 
@@ -307,7 +414,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .expertise-card {
@@ -353,10 +460,15 @@
 
         /* CTA Section */
         .cta-section {
-            padding: 40px 0;
+            padding: 30px 0;
             background: #1e40af;
             color: white;
             text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .cta-section h2 {
@@ -369,34 +481,39 @@
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            line-height: 1.6;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            font-size: 1rem;
         }
 
-        .btn-primary {
+        .cta-button.primary {
             background: #fbbf24;
             color: #1e40af;
             box-shadow: 0 4px 14px rgba(251, 191, 36, 0.3);
         }
 
-        .btn-primary:hover {
+        .cta-button.primary:hover {
             background: #f59e0b;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
         }
 
-        .btn-secondary {
+        .cta-button.secondary {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
 
-        .btn-secondary:hover {
+        .cta-button.secondary:hover {
             background: white;
             color: #1e40af;
         }
@@ -410,40 +527,135 @@
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         .footer-top {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
             margin-bottom: 2rem;
-            text-align: left;
+            text-align: center;
+            align-items: stretch;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .footer-section:nth-child(1) {
+            text-align: center;
+        }
+
+        .footer-section:nth-child(2) {
+            text-align: center;
+        }
+
+        .footer-section:nth-child(3) {
+            text-align: center;
         }
 
         .footer-section h4 {
             color: white;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .footer-section p,
         .footer-section a {
             color: #94a3b8;
             text-decoration: none;
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-section a:hover {
             color: #1e40af;
         }
 
+        .footer-credentials {
+            margin-top: 1.5rem;
+            margin-bottom: auto;
+            text-align: center;
+        }
+
+        .credential-badge {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: auto;
+            text-align: center;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #1e40af;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .contact-item i {
+            color: #1e40af;
+            width: 18px;
+            font-size: 1rem;
+        }
+
+        .contact-item span {
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
         .footer-bottom {
             border-top: 1px solid #334155;
-            padding-top: 2rem;
+            padding-top: 2.5rem;
             text-align: center;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-bottom-content p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         /* Mobile Responsive */
@@ -462,7 +674,7 @@
             }
 
             .service-detail {
-                padding: 2rem;
+                padding: 1.5rem;
             }
 
             .cta-buttons {
@@ -481,7 +693,6 @@
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
-            <div class="logo">John M. James, Ltd.</div>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -505,146 +716,219 @@
     <section class="services-section">
         <div class="container">
             <div class="services-grid">
-                <div class="service-detail">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <div>
-                            <h3>Tax Preparation & Planning</h3>
-                            <div class="subtitle">Individual, Corporate & Fiduciary Services</div>
-                        </div>
+                <div class="service-detail" data-service="tax">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
                     </div>
-                    <p>Expert tax preparation and strategic planning with hands-on, personalized service. I personally interview all clients and apply federal tax law expertise to minimize your tax liabilities through comprehensive analysis and proactive planning strategies.</p>
-                    <ul class="service-features">
-                        <li>Individual, corporate, and fiduciary tax return preparation</li>
-                        <li>Strategic tax minimization planning and consultation</li>
-                        <li>Proactive year-round tax strategy development</li>
-                        <li>Federal tax law interpretation and application</li>
-                        <li>Business partnership and S-Corporation tax optimization</li>
-                        <li>IRS and state revenue department representation</li>
-                        <li>Multi-year tax planning and projection services</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Schedule Tax Consultation</a>
+                    <h3>Tax Preparation & Planning</h3>
+                    <div class="subtitle">Individual, Corporate & Fiduciary Services</div>
+                    <p>Expert tax preparation and strategic planning with hands-on, personalized service. I personally interview all clients and apply federal tax law expertise to minimize your tax liabilities.</p>
                 </div>
 
-                <div class="service-detail">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div>
-                            <h3>Business Accounting & Consulting</h3>
-                            <div class="subtitle">Complete Business Financial Solutions</div>
-                        </div>
+                <div class="service-detail" data-service="business">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <p>Comprehensive business accounting and consulting services including detailed financial analysis, business evaluations, and ongoing accounting support to help you monitor progress and make informed decisions about your business operations.</p>
-                    <ul class="service-features">
-                        <li>Monthly and quarterly financial statement preparation</li>
-                        <li>Business record maintenance and account reconciliation</li>
-                        <li>Trial balance preparation and adjusting journal entries</li>
-                        <li>Business valuation and comprehensive financial analysis</li>
-                        <li>Cash flow management and forecasting</li>
-                        <li>Accounting software setup, training, and ongoing support</li>
-                        <li>Overall business operations assessment and consulting</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Explore Business Services</a>
+                    <h3>Business Accounting & Consulting</h3>
+                    <div class="subtitle">Complete Business Financial Solutions</div>
+                    <p>Comprehensive business accounting and consulting services including detailed financial analysis, business evaluations, and ongoing accounting support to help you monitor progress.</p>
                 </div>
 
-                <div class="service-detail">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-piggy-bank"></i>
-                        </div>
-                        <div>
-                            <h3>Retirement Planning</h3>
-                            <div class="subtitle">CERTIFIED FINANCIAL PLANNER™ Services</div>
-                        </div>
+                <div class="service-detail" data-service="retirement">
+                    <div class="service-icon">
+                        <i class="fas fa-piggy-bank"></i>
                     </div>
-                    <p>As a CFP® certificant, I provide comprehensive retirement planning strategies including 401(k), SEP, and ESOP design and management. I help you build, preserve, and efficiently transfer wealth while minimizing tax implications throughout your financial journey.</p>
-                    <ul class="service-features">
-                        <li>Comprehensive retirement plan design and implementation</li>
-                        <li>401(k) plan setup, management, and optimization</li>
-                        <li>SEP-IRA and SIMPLE IRA planning strategies</li>
-                        <li>Employee Stock Ownership Plan (ESOP) guidance</li>
-                        <li>Income tax planning specifically for retirement years</li>
-                        <li>Wealth preservation and distribution strategies</li>
-                        <li>Financial planning education and ongoing guidance</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Plan Your Retirement</a>
+                    <h3>Retirement Planning</h3>
+                    <div class="subtitle">CERTIFIED FINANCIAL PLANNER™ Services</div>
+                    <p>As a CFP® certificant, I provide comprehensive retirement planning strategies including 401(k), SEP, and ESOP design and management. I help you build, preserve, and efficiently transfer wealth.</p>
                 </div>
 
-                <div class="service-detail">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Estate & Wealth Planning</h3>
-                            <div class="subtitle">Personal Wealth Analysis & Transfer</div>
-                        </div>
+                <div class="service-detail" data-service="estate">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <p>Comprehensive estate planning and wealth transfer strategies, including specialized assistance with aging parent challenges such as healthcare decisions, living arrangements, and coordinated family financial planning to preserve and transfer wealth efficiently.</p>
-                    <ul class="service-features">
-                        <li>Personal wealth analysis and strategic planning</li>
-                        <li>Estate planning strategy development and implementation</li>
-                        <li>Wealth transfer guidance and tax minimization</li>
-                        <li>Aging parent care navigation and financial coordination</li>
-                        <li>Healthcare and living arrangement financial planning</li>
-                        <li>Multi-generational family financial coordination</li>
-                        <li>Trust and estate tax planning and preparation</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Protect Your Legacy</a>
+                    <h3>Estate & Wealth Planning</h3>
+                    <div class="subtitle">Personal Wealth Analysis & Transfer</div>
+                    <p>Comprehensive estate planning and wealth transfer strategies, including specialized assistance with aging parent challenges such as healthcare decisions, living arrangements, and coordinated family financial planning.</p>
                 </div>
 
-                <div class="service-detail">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div>
-                            <h3>Financial Structuring & Banking</h3>
-                            <div class="subtitle">Transaction Optimization & Banking Relations</div>
-                        </div>
+                <div class="service-detail" data-service="banking">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
+                    <h3>Financial Structuring & Banking</h3>
+                    <div class="subtitle">Transaction Optimization & Banking Relations</div>
                     <p>Professional guidance on banking relationships and financial transaction structuring to optimize your overall financial position, improve cash flow management, and ensure efficient business and personal financial operations.</p>
-                    <ul class="service-features">
-                        <li>Banking relationship optimization and negotiation</li>
-                        <li>Financial transaction structuring and analysis</li>
-                        <li>Cash flow analysis and management strategies</li>
-                        <li>Credit facility structuring and optimization</li>
-                        <li>Investment strategy coordination and oversight</li>
-                        <li>Financial institution selection and management</li>
-                        <li>Business financing and capital structure planning</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Optimize Your Structure</a>
                 </div>
 
-                <div class="service-detail">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div>
-                            <h3>Payroll & Business Support</h3>
-                            <div class="subtitle">Ongoing Business Services & Education</div>
-                        </div>
+                <div class="service-detail" data-service="payroll">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <p>Complete payroll tax return preparation and comprehensive business support services, helping clients develop accounting knowledge while providing ongoing monitoring of business progress and professional development guidance.</p>
-                    <ul class="service-features">
-                        <li>Payroll tax return preparation and timely filing</li>
-                        <li>Business accounting education and skills development</li>
-                        <li>Ongoing business progress monitoring and reporting</li>
-                        <li>Client accounting knowledge development and training</li>
-                        <li>Professional accounting principles application</li>
-                        <li>Comprehensive business support and advisory services</li>
-                        <li>QuickBooks and accounting software training</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Get Business Support</a>
+                    <h3>Payroll & Business Support</h3>
+                    <div class="subtitle">Ongoing Business Services & Education</div>
+                    <p>Complete payroll tax return preparation and comprehensive business support services, helping clients develop accounting knowledge while providing ongoing monitoring of business progress.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Service Modals -->
+    <div id="taxModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div>
+                    <h3 class="modal-title">Tax Preparation & Planning</h3>
+                    <div class="modal-subtitle">Individual, Corporate & Fiduciary Services</div>
+                </div>
+            </div>
+            <p class="modal-description">Expert tax preparation and strategic planning with hands-on, personalized service. I personally interview all clients and apply federal tax law expertise to minimize your tax liabilities through comprehensive analysis and proactive planning strategies.</p>
+            <ul class="modal-features">
+                <li>Individual, corporate, and fiduciary tax return preparation</li>
+                <li>Strategic tax minimization planning and consultation</li>
+                <li>Proactive year-round tax strategy development</li>
+                <li>Federal tax law interpretation and application</li>
+                <li>Business partnership and S-Corporation tax optimization</li>
+                <li>IRS and state revenue department representation</li>
+                <li>Multi-year tax planning and projection services</li>
+            </ul>
+            <a href="contact.html" class="modal-cta">Schedule Tax Consultation</a>
+        </div>
+    </div>
+
+    <div id="businessModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div>
+                    <h3 class="modal-title">Business Accounting & Consulting</h3>
+                    <div class="modal-subtitle">Complete Business Financial Solutions</div>
+                </div>
+            </div>
+            <p class="modal-description">Comprehensive business accounting and consulting services including detailed financial analysis, business evaluations, and ongoing accounting support to help you monitor progress and make informed decisions about your business operations.</p>
+            <ul class="modal-features">
+                <li>Monthly and quarterly financial statement preparation</li>
+                <li>Business record maintenance and account reconciliation</li>
+                <li>Trial balance preparation and adjusting journal entries</li>
+                <li>Business valuation and comprehensive financial analysis</li>
+                <li>Cash flow management and forecasting</li>
+                <li>Accounting software setup, training, and ongoing support</li>
+                <li>Overall business operations assessment and consulting</li>
+            </ul>
+            <a href="contact.html" class="modal-cta">Explore Business Services</a>
+        </div>
+    </div>
+
+    <div id="retirementModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <div>
+                    <h3 class="modal-title">Retirement Planning</h3>
+                    <div class="modal-subtitle">CERTIFIED FINANCIAL PLANNER™ Services</div>
+                </div>
+            </div>
+            <p class="modal-description">As a CFP® certificant, I provide comprehensive retirement planning strategies including 401(k), SEP, and ESOP design and management. I help you build, preserve, and efficiently transfer wealth while minimizing tax implications throughout your financial journey.</p>
+            <ul class="modal-features">
+                <li>Comprehensive retirement plan design and implementation</li>
+                <li>401(k) plan setup, management, and optimization</li>
+                <li>SEP-IRA and SIMPLE IRA planning strategies</li>
+                <li>Employee Stock Ownership Plan (ESOP) guidance</li>
+                <li>Income tax planning specifically for retirement years</li>
+                <li>Wealth preservation and distribution strategies</li>
+                <li>Financial planning education and ongoing guidance</li>
+            </ul>
+            <a href="contact.html" class="modal-cta">Plan Your Retirement</a>
+        </div>
+    </div>
+
+    <div id="estateModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div>
+                    <h3 class="modal-title">Estate & Wealth Planning</h3>
+                    <div class="modal-subtitle">Personal Wealth Analysis & Transfer</div>
+                </div>
+            </div>
+            <p class="modal-description">Comprehensive estate planning and wealth transfer strategies, including specialized assistance with aging parent challenges such as healthcare decisions, living arrangements, and coordinated family financial planning to preserve and transfer wealth efficiently.</p>
+            <ul class="modal-features">
+                <li>Personal wealth analysis and strategic planning</li>
+                <li>Estate planning strategy development and implementation</li>
+                <li>Wealth transfer guidance and tax minimization</li>
+                <li>Aging parent care navigation and financial coordination</li>
+                <li>Healthcare and living arrangement financial planning</li>
+                <li>Multi-generational family financial coordination</li>
+                <li>Trust and estate tax planning and preparation</li>
+            </ul>
+            <a href="contact.html" class="modal-cta">Protect Your Legacy</a>
+        </div>
+    </div>
+
+    <div id="bankingModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div>
+                    <h3 class="modal-title">Financial Structuring & Banking</h3>
+                    <div class="modal-subtitle">Transaction Optimization & Banking Relations</div>
+                </div>
+            </div>
+            <p class="modal-description">Professional guidance on banking relationships and financial transaction structuring to optimize your overall financial position, improve cash flow management, and ensure efficient business and personal financial operations.</p>
+            <ul class="modal-features">
+                <li>Banking relationship optimization and negotiation</li>
+                <li>Financial transaction structuring and analysis</li>
+                <li>Cash flow analysis and management strategies</li>
+                <li>Credit facility structuring and optimization</li>
+                <li>Investment strategy coordination and oversight</li>
+                <li>Financial institution selection and management</li>
+                <li>Business financing and capital structure planning</li>
+            </ul>
+            <a href="contact.html" class="modal-cta">Optimize Your Structure</a>
+        </div>
+    </div>
+
+    <div id="payrollModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div>
+                    <h3 class="modal-title">Payroll & Business Support</h3>
+                    <div class="modal-subtitle">Ongoing Business Services & Education</div>
+                </div>
+            </div>
+            <p class="modal-description">Complete payroll tax return preparation and comprehensive business support services, helping clients develop accounting knowledge while providing ongoing monitoring of business progress and professional development guidance.</p>
+            <ul class="modal-features">
+                <li>Payroll tax return preparation and timely filing</li>
+                <li>Business accounting education and skills development</li>
+                <li>Ongoing business progress monitoring and reporting</li>
+                <li>Client accounting knowledge development and training</li>
+                <li>Professional accounting principles application</li>
+                <li>Comprehensive business support and advisory services</li>
+                <li>QuickBooks and accounting software training</li>
+            </ul>
+            <a href="contact.html" class="modal-cta">Get Business Support</a>
+        </div>
+    </div>
 
     <!-- Process Section -->
     <section class="process-section">
@@ -719,11 +1003,13 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Get Started?</h2>
-            <p>Let's discuss how our professional expertise can help you achieve your financial goals</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-button btn-primary">Schedule Your Consultation</a>
-                <a href="tel:763-227-7909" class="cta-button btn-secondary">Call (763) 227-7909</a>
+            <div class="cta-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Let's discuss how our professional expertise can help you achieve your financial goals</p>
+                <div>
+                    <a href="contact.html" class="cta-button primary">Schedule Your Consultation</a>
+                    <a href="tel:763-227-7909" class="cta-button secondary">Call (763) 227-7909</a>
+                </div>
             </div>
         </div>
     </section>
@@ -735,21 +1021,90 @@
                 <div class="footer-section">
                     <h4>John M. James, Ltd.</h4>
                     <p>Professional tax and financial planning services for over 30 years. Licensed CPA and CERTIFIED FINANCIAL PLANNER™ serving the greater Twin Cities area.</p>
+                    <div class="footer-credentials">
+                        <span class="credential-badge">Licensed CPA</span>
+                        <span class="credential-badge">CERTIFIED FINANCIAL PLANNER™</span>
+                    </div>
                 </div>
+
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>(763) 227-7909</p>
-                    <p>john@jmjltd-cpa.com</p>
-                    <p>1605 Wayzata Blvd W<br>Long Lake, MN 55356</p>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(763) 227-7909</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>john@jmjltd-cpa.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1605 Wayzata Blvd W<br>Long Lake, MN 55356</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri: 9:00 AM - 5:00 PM</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 John M. James, Ltd. All rights reserved. | Licensed CPA & CERTIFIED FINANCIAL PLANNER™</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 John M. James, Ltd. All rights reserved.</p>
+                    <p>Licensed CPA & CERTIFIED FINANCIAL PLANNER™</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Service modal functionality
+        const serviceCards = document.querySelectorAll('.service-detail');
+        const modals = document.querySelectorAll('.modal');
+        const modalCloses = document.querySelectorAll('.modal-close');
+
+        serviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const serviceType = card.getAttribute('data-service');
+                const modal = document.getElementById(serviceType + 'Modal');
+                if (modal) {
+                    modal.classList.add('show');
+                }
+            });
+        });
+
+        modalCloses.forEach(close => {
+            close.addEventListener('click', () => {
+                close.closest('.modal').classList.remove('show');
+            });
+        });
+
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    modal.classList.remove('show');
+                });
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -762,6 +1117,16 @@
                     });
                 }
             });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
         });
     </script>
 </body>
